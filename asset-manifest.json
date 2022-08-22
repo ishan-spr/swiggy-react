@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/ishan-spr/swiggy-react/static/css/main.287405b9.css",
-    "main.js": "/ishan-spr/swiggy-react/static/js/main.a08f6ffd.js",
-    "static/js/787.7f074b92.chunk.js": "/ishan-spr/swiggy-react/static/js/787.7f074b92.chunk.js",
-    "static/media/background.jpeg": "/ishan-spr/swiggy-react/static/media/background.771777784bd53b53d1df.jpeg",
-    "index.html": "/ishan-spr/swiggy-react/index.html",
-    "main.287405b9.css.map": "/ishan-spr/swiggy-react/static/css/main.287405b9.css.map",
-    "main.a08f6ffd.js.map": "/ishan-spr/swiggy-react/static/js/main.a08f6ffd.js.map",
-    "787.7f074b92.chunk.js.map": "/ishan-spr/swiggy-react/static/js/787.7f074b92.chunk.js.map"
+    "main.css": "/swiggy-react/static/css/main.2c53fa62.css",
+    "main.js": "/swiggy-react/static/js/main.fc7da9fc.js",
+    "static/js/787.7f074b92.chunk.js": "/swiggy-react/static/js/787.7f074b92.chunk.js",
+    "static/media/background.jpeg": "/swiggy-react/static/media/background.771777784bd53b53d1df.jpeg",
+    "index.html": "/swiggy-react/index.html",
+    "main.2c53fa62.css.map": "/swiggy-react/static/css/main.2c53fa62.css.map",
+    "main.fc7da9fc.js.map": "/swiggy-react/static/js/main.fc7da9fc.js.map",
+    "787.7f074b92.chunk.js.map": "/swiggy-react/static/js/787.7f074b92.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.287405b9.css",
-    "static/js/main.a08f6ffd.js"
+    "static/css/main.2c53fa62.css",
+    "static/js/main.fc7da9fc.js"
   ]
 }
