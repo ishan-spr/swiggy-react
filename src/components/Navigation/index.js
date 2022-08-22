@@ -25,7 +25,7 @@ function NavLink({ icon, text, mobileOnly, style }) {
     return (
         <>
             <div className={styles.NavLink} style={mobileOnly ? { ...style, display: 'none' } : style}>
-                <span class="material-symbols-outlined">{icon}</span>
+                <span className="material-symbols-outlined">{icon}</span>
                 <span className={styles.Text}>{text}</span>
             </div>
         </>

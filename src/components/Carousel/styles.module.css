@@ -1,0 +1,64 @@
+.CarouselContainer {
+    grid-area: 2/2/3/3;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.CarouselWrapper {
+    height: 100%;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    scroll-behavior: smooth;
+}
+
+.CarouselCard {
+    min-height: 90%;
+    width: 250px;
+    margin: 10px;
+    display: inline-block;
+    color: white;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.CarouselCard:hover {
+    transform: scale(1.1);
+    transition: transform 0ms ease-in-out 0ms;
+}
+
+.CarouselCard img {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+}
+
+.CarouselBtn {
+    grid-row: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.CarouselBtn button {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 0px;
+    cursor: pointer;
+}
+
+.CarouselBtn[data-direction="left"] {
+    justify-content: flex-end;
+    position: relative;
+    right: -20px;
+    z-index: 100;
+}
+
+.CarouselBtn[data-direction="right"] {
+    justify-content: flex-start;
+    position: relative;
+    left: -20px;
+    z-index: 100;
+}
