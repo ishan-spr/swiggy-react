@@ -1,0 +1,100 @@
+.ItemsWrapper {
+    display: grid;
+    grid-template-rows: 80px auto;
+    grid-row: 3;
+    position: static;
+}
+
+.ItemsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    grid-row: 2;
+    padding: 10px 0px;
+}
+
+.ItemsGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 60%;
+    justify-content: center;
+}
+
+.ItemsCard {
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    aspect-ratio: 2/3;
+}
+
+.OrderItem {
+    height: 50px;
+    width: 100%;
+    visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: blue;
+    cursor: pointer;
+    border-top: 0.5px solid grey;
+    font-weight: 200;
+    font-size : calc(5px + 0.390625vw);
+    line-height: 0;
+}
+
+.ItemsCard:hover .OrderItem {
+    visibility: visible;
+}
+
+.ItemImage {
+    height: 50%;
+    width: 100%;
+}
+
+.ItemImage img {
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+}
+
+.ItemsCard:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 8px 0px grey;
+    border: 0.5px solid gray;
+}
+
+.ItemCuisine {
+    color: #686b78;
+    font-size : calc(5px + 0.390625vw);
+}
+
+.ItemTitle {
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.DeliveryDetail {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size : calc(5px + 0.390625vw);
+}
+
+.DeliveryDetail span {
+    display: inline-block;
+}
+
+.ItemOffer {
+    font-size : calc(5px + 0.390625vw);
+    text-align: center;
+    color: #8a584b;
+    border-top: 0.5px solid gray;
+    padding-top: 10px;
+}
+
+
