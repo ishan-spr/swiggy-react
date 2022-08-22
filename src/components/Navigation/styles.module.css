@@ -1,0 +1,34 @@
+.Navbar {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 0.5px solid grey;
+    width: 100%;
+    background-color: white;
+    grid-row: 1;
+    height: 80px;
+}
+
+.NavGroup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.NavGroup>* {
+    display: inline-block;
+    height: min-content;
+}
+
+.NavLink {
+    box-sizing: border-box;
+    display: flex;
+    padding: 5px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    position: static;
+}
+
+.NavLink .Text{
+    display: flex;
+    align-items: center;
+}
