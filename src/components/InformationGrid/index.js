@@ -1,7 +1,7 @@
 import React from "react";
 import styles from './styles.module.css'
 import data from './data'
-import { Navbar, NavGroup, NavLink, DropDown } from "../Navigation"
+import { Navbar, NavGroup, NavLink, DropDown , Option} from "../Navigation"
 
 function Card({ src }) {
     return (
@@ -42,7 +42,11 @@ function InformationGrid() {
                     <NavLink text={"Delivery Time"} />
                     <NavLink text={"Cost"} />
                     <NavLink text={"Rating"} />
-                    <DropDown text={"Filter"} icon={"filter_list"} />
+                    <DropDown text={"Filter"} icon={"filter_list"} >
+                        <Option>Sample 1</Option>
+                        <Option>Sample 2</Option>
+                        <Option>Sample 3</Option>
+                    </DropDown>
                 </NavGroup>
             </Navbar>
             <div className={styles.ItemsContainer}>

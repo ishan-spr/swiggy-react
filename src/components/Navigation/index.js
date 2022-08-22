@@ -32,24 +32,26 @@ function NavLink({ icon, text, mobileOnly, style }) {
     )
 }
 
-function DropDown({ icon, text, style, mobileOnly ,children}) {
+function DropDown({ icon, text, style, mobileOnly, children }) {
     return (
         <>
             <div className={styles.NavLink + " " + styles.Dropdown} style={mobileOnly ? { ...style, display: 'none' } : style}>
                 {icon ? <span className="material-symbols-outlined">{icon}</span> : null}
                 {text ? <span className={styles.Text}>{text}</span> : null}
                 <div className={styles.DropdownContent}>
-                    {children}
+                    <ul>
+                        {children}
+                    </ul>
                 </div>
             </div>
         </>
     )
 }
 
-function Option() {
+function Option({ children }) {
     return (
         <>
-
+            <li>{children}</li>
         </>
     )
 }
