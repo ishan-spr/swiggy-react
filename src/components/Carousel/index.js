@@ -44,7 +44,6 @@ function CarouselWrapper({ slides, setIsleftVisible, setIsRightVisible }, ref) {
         } else {
             setIsleftVisible(true)
         }
-        console.log(width)
         containerRef.current.scrollBy(width, 0)
     }
 
