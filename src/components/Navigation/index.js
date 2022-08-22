@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './styles.module.css'
 
-function Navbar({ children , style }) {
+function Navbar({ children, style }) {
     return (
         <>
             <div className={styles.Navbar} style={style}>
@@ -25,12 +25,34 @@ function NavLink({ icon, text, mobileOnly, style }) {
     return (
         <>
             <div className={styles.NavLink} style={mobileOnly ? { ...style, display: 'none' } : style}>
-                <span className="material-symbols-outlined">{icon}</span>
-                <span className={styles.Text}>{text}</span>
+                {icon ? <span className="material-symbols-outlined">{icon}</span> : null}
+                {text ? <span className={styles.Text}>{text}</span> : null}
             </div>
         </>
     )
 }
 
+function DropDown({ icon, text, style, mobileOnly ,children}) {
+    return (
+        <>
+            <div className={styles.NavLink + " " + styles.Dropdown} style={mobileOnly ? { ...style, display: 'none' } : style}>
+                {icon ? <span className="material-symbols-outlined">{icon}</span> : null}
+                {text ? <span className={styles.Text}>{text}</span> : null}
+                <div className={styles.DropdownContent}>
+                    {children}
+                </div>
+            </div>
+        </>
+    )
+}
 
-export { Navbar, NavGroup, NavLink }
+function Option() {
+    return (
+        <>
+
+        </>
+    )
+}
+
+
+export { Navbar, NavGroup, NavLink, DropDown, Option }

@@ -4,7 +4,7 @@ import styles from './styles.module.css'
 
 export default function Header() {
     return (
-        <Navbar>
+        <Navbar style={{position:"fixed",top:0,zIndex:"999"}}>
             <NavGroup style={{flexBasis:"20%"}}>
                 <div style={{ margin: '10px' }}>
                     <svg height="40px" aria-label="Sprinklr logo" viewBox="0 0 14 14">

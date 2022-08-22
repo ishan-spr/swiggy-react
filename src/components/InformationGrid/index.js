@@ -1,7 +1,7 @@
 import React from "react";
 import styles from './styles.module.css'
 import data from './data'
-import { Navbar, NavGroup, NavLink } from "../Navigation"
+import { Navbar, NavGroup, NavLink, DropDown } from "../Navigation"
 
 function Card({ src }) {
     return (
@@ -28,7 +28,7 @@ function Card({ src }) {
 function InformationGrid() {
     return (
         <div className={styles.ItemsWrapper}>
-            <Navbar>
+            <Navbar style={{ top: 0, position: "sticky", zIndex: "1000" }}>
                 <NavGroup style={{ flexBasis: "20%" }}>
                     <div class="logo">
                         <span class="material-symbols-outlined">
@@ -38,12 +38,11 @@ function InformationGrid() {
                     <div class="text">198756 Restaurants</div>
                 </NavGroup>
                 <NavGroup style={{ fontSize: "calc(5px + 0.390625vw)", flexBasis: "30%", justifyContent: "space-evenly" }}>
-                    <NavLink icon={"menu"} mobileOnly={true} />
-                    <NavLink icon={"search"} text={"Search"} />
-                    <NavLink icon={"percent"} text={"Offers"} />
-                    <NavLink icon={"help"} text={"Help"} />
-                    <NavLink icon={"person"} text={"Sign In"} />
-                    <NavLink icon={"shopping_bag"} text={"Cart"} />
+                    <NavLink text={"Relevence"} />
+                    <NavLink text={"Delivery Time"} />
+                    <NavLink text={"Cost"} />
+                    <NavLink text={"Rating"} />
+                    <DropDown text={"Filter"} icon={"filter_list"} />
                 </NavGroup>
             </Navbar>
             <div className={styles.ItemsContainer}>
