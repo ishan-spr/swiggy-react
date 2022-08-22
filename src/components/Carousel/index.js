@@ -79,13 +79,13 @@ export default function Carousel({ slides }) {
 
     return (
         <>
-            <div className={styles.CarouselBtn} data-direction="left"> {leftVisible ? <button onClick={handleLeftScroll}><span className="material-symbols-outlined">
+            <div className={styles.CarouselBtn} data-direction="left"> {leftVisible ? <button onClick={handleLeftScroll}><span className="material-symbols-outlined" data-testid="left-btn">
                 arrow_back_ios
             </span></button> : null}</div>
             <div className={styles.CarouselContainer}>
                 <CarouselWrapper slides={slides} ref={CarouselWarrpperRef} setIsRightVisible={(val) => (setIsRightVisible(val))} setIsleftVisible={(val) => { setIsleftVisible(val) }} />
             </div>
-            <div className={styles.CarouselBtn} data-direction="right">{rightVisible ? <button onClick={handleRightScroll}><span className="material-symbols-outlined">
+            <div className={styles.CarouselBtn} data-direction="right">{rightVisible ? <button onClick={handleRightScroll}><span className="material-symbols-outlined" data-testid="right-btn">
                 arrow_forward_ios
             </span></button> : null}</div>
         </>
