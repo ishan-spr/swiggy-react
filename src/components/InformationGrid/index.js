@@ -1,16 +1,18 @@
 import React from "react";
 import styles from './styles.module.css'
 import data from './data'
-import { Navbar, NavGroup, NavLink, DropDown , Option} from "../Navigation"
+import { Navbar, NavGroup, NavLink, DropDown, Option } from "../Navigation"
 
 export function Card({ src }) {
+    const [hidden, setHidden] = React.useState(true)
+
     return (
-        <div className={styles.ItemsCard}>
+        <div className={styles.ItemsCard} onMouseEnter={()=>{setHidden(false)}} onMouseLeave={()=>{setHidden(true)}}>
             <div className={styles.ItemImage} data-testid="image">
                 <img src={src} alt="Not found" />
             </div>
             <div className={styles.ItemDetail}>
-                <p className={styles.ItemTitle}>Natutal Ice Cream</p>
+                <p className={styles.ItemTitle}>Natural Ice Cream</p>
                 <p className={styles.ItemCuisine}>Desserts</p>
                 <p className={styles.DeliveryDetail}>
                     <span className={styles.Rating}>4</span>
@@ -18,9 +20,10 @@ export function Card({ src }) {
                     <span className={styles.time}>25 Mins</span>
                     <span>.</span><span className={styles.cost}>Rs. 400 for two</span>
                 </p><p className={styles.ItemOffer}>50% off | Use welcome20</p></div>
-            <div className={styles.OrderItem} data-testid="Quick-View">
+            {!hidden ? <div className={styles.OrderItem} data-testid="Quick-View">
                 <p>Ouick view</p>
-            </div>
+            </div> : null
+            }
         </div>
     )
 }
@@ -38,10 +41,10 @@ function InformationGrid() {
                     <div className="text">198756 Restaurants</div>
                 </NavGroup>
                 <NavGroup style={{ fontSize: "calc(5px + 0.390625vw)", flexBasis: "30%", justifyContent: "space-evenly" }}>
-                    <NavLink text={"Relevence"} tab={1}/>
-                    <NavLink text={"Delivery Time"} tab={2}/>
-                    <NavLink text={"Cost"} tab={3}/>
-                    <NavLink text={"Rating"} tab={4}/>
+                    <NavLink text={"Relevence"} tab={1} />
+                    <NavLink text={"Delivery Time"} tab={2} />
+                    <NavLink text={"Cost"} tab={3} />
+                    <NavLink text={"Rating"} tab={4} />
                     <DropDown text={"Filter"} icon={"filter_list"} >
                         <Option>Sample 1</Option>
                         <Option>Sample 2</Option>

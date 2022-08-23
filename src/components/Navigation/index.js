@@ -55,7 +55,7 @@ function NavLink({ icon, text, mobileOnly, style , tab }) {
 
     return (
         <>
-            <div className={ tab === active ? styles.NavLink + " " + styles.active :styles.NavLink } style={mobileOnly ? { ...style, display: 'none' } : style} onClick={handleSelect} >
+            <div className={ tab === active ? styles.NavLink + " " + styles.active :styles.NavLink } style={mobileOnly ? { ...style, display: 'none' } : style} onClick={handleSelect}  data-testid={`nav-${tab}`}>
                 {icon ? <span className="material-symbols-outlined">{icon}</span> : null}
                 {text ? <span className={styles.Text}>{text}</span> : null}
             </div>
