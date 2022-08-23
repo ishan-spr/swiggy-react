@@ -1,4 +1,4 @@
-import { screen, render, fireEvent } from "@testing-library/react"
+import { screen, render} from "@testing-library/react"
 import InformationGrid, { Card } from '../index'
 import userEvent from '@testing-library/user-event'
 import { faker } from "@faker-js/faker"
@@ -13,3 +13,12 @@ test("Hover Effect For Dropdown", async () => {
   expect(screen.getByText("Sample 1")).toBeInTheDocument()
 })
 
+test("Card Quick View on hover", async () => {
+  let user = userEvent.setup()
+  render(<Card src={faker.image.abstract()} />)
+  let card = screen.getByTestId("Card")
+  expect(card).toBeInTheDocument()
+  expect(screen.queryByTestId("Quick-View")).not.toBeInTheDocument()
+  await user.hover(card)
+  expect(screen.getByTestId("Quick-View")).toBeInTheDocument()
+})

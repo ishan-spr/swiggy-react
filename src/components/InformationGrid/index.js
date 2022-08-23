@@ -5,9 +5,9 @@ import { Navbar, NavGroup, NavLink, DropDown, Option } from "../Navigation"
 
 export function Card({ src }) {
     const [hidden, setHidden] = React.useState(true)
-
     return (
-        <div className={styles.ItemsCard} onMouseEnter={()=>{setHidden(false)}} onMouseLeave={()=>{setHidden(true)}}>
+        <div className={styles.ItemsCard} onMouseEnter={()=>{  
+            setHidden(false)}} data-testid="Card" onMouseLeave={()=>{setHidden(true)}}>
             <div className={styles.ItemImage} data-testid="image">
                 <img src={src} alt="Not found" />
             </div>

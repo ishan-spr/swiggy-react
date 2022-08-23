@@ -9,8 +9,8 @@ function App() {
     <>
       <Header />
       <HeroComponent />
-      <InformationGrid />
-      <Footer />
+      <InformationGrid/>
+      <Footer/>
     </>
   );
 }
