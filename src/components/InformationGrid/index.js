@@ -38,10 +38,10 @@ function InformationGrid() {
                     <div className="text">198756 Restaurants</div>
                 </NavGroup>
                 <NavGroup style={{ fontSize: "calc(5px + 0.390625vw)", flexBasis: "30%", justifyContent: "space-evenly" }}>
-                    <NavLink text={"Relevence"} />
-                    <NavLink text={"Delivery Time"} />
-                    <NavLink text={"Cost"} />
-                    <NavLink text={"Rating"} />
+                    <NavLink text={"Relevence"} tab={1}/>
+                    <NavLink text={"Delivery Time"} tab={2}/>
+                    <NavLink text={"Cost"} tab={3}/>
+                    <NavLink text={"Rating"} tab={4}/>
                     <DropDown text={"Filter"} icon={"filter_list"} >
                         <Option>Sample 1</Option>
                         <Option>Sample 2</Option>

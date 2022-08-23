@@ -1,13 +1,38 @@
 import React from 'react'
 import styles from './styles.module.css'
 
+
+function navReducer(state, { type, payload } = {}) {
+    switch (type) {
+        case "CHANGE":
+            return { ...state, active: payload }
+        default:
+            return { ...state }
+    }
+}
+
+const NavContext = React.createContext()
+
+function NavContextProvider({ children }) {
+    const [state, dispatch] = React.useReducer(navReducer,{active:null})
+    return <NavContext.Provider value={[state, dispatch]}>{children}</NavContext.Provider>
+}
+
+function useNavContext(){
+    const context = React.useContext(NavContext)
+    if(!context){
+        throw new Error("Wrap element inside context provider");
+    }
+    return context
+}
+
 function Navbar({ children, style }) {
     return (
-        <>
+        <NavContextProvider>
             <div className={styles.Navbar} style={style}>
                 {children}
             </div>
-        </>
+        </NavContextProvider>
     )
 }
 
@@ -21,10 +46,16 @@ function NavGroup({ children, style }) {
     )
 }
 
-function NavLink({ icon, text, mobileOnly, style }) {
+function NavLink({ icon, text, mobileOnly, style , tab }) {
+    const [{active},dispatch] = useNavContext()
+
+    function handleSelect(){
+        dispatch({type:"CHANGE",payload:tab})
+    }
+
     return (
         <>
-            <div className={styles.NavLink} style={mobileOnly ? { ...style, display: 'none' } : style}>
+            <div className={ tab === active ? styles.NavLink + " " + styles.active :styles.NavLink } style={mobileOnly ? { ...style, display: 'none' } : style} onClick={handleSelect} >
                 {icon ? <span className="material-symbols-outlined">{icon}</span> : null}
                 {text ? <span className={styles.Text}>{text}</span> : null}
             </div>

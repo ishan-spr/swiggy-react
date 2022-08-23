@@ -28,6 +28,14 @@
     position: static;
 }
 
+.NavLink:hover {
+    border-bottom: 2px solid black;
+}
+
+.active{
+    border-bottom: 2px solid black;
+}
+
 .NavLink .Text{
     display: flex;
     align-items: center;

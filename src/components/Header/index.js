@@ -16,12 +16,12 @@ export default function Header() {
                 <div className={styles.text} style={{ margin: '10px' }}>Swiggy</div>
             </NavGroup>
             <NavGroup style={{ fontSize: "calc(5px + 0.390625vw)" , flexBasis:"30%" , justifyContent: "space-evenly" }}>
-                <NavLink icon={"menu"} mobileOnly={true} />
-                <NavLink icon={"search"} text={"Search"} />
-                <NavLink icon={"percent"} text={"Offers"} />
-                <NavLink icon={"help"} text={"Help"} />
-                <NavLink icon={"person"} text={"Sign In"} />
-                <NavLink icon={"shopping_bag"} text={"Cart"} />
+                <NavLink icon={"menu"} mobileOnly={true} tab={1}/>
+                <NavLink icon={"search"} text={"Search"} tab={2}/>
+                <NavLink icon={"percent"} text={"Offers"} tab={3}/>
+                <NavLink icon={"help"} text={"Help"} tab={4}/>
+                <NavLink icon={"person"} text={"Sign In"} tab={5}/>
+                <NavLink icon={"shopping_bag"} text={"Cart"} tab={6}/>
             </NavGroup>
         </Navbar>
     )
