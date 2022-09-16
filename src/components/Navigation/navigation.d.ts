@@ -1,12 +1,21 @@
+import { ReactNode } from "react";
+
 type CSSType = { [key: string]: any };
 
-export type NavLinkProp = {
-  icon: String;
+interface NavComponents {
+  icon?: String;
   text?: String;
   mobileOnly?: Boolean;
   style?: CSSType;
+}
+
+export interface NavLinkProp extends NavComponents {
   tab: number;
-};
+}
+
+export interface DropDownProp extends NavComponents {
+  children?: ReactNode;
+}
 
 export enum ActiveActionKind {
   CHANGE = "CHANGE",

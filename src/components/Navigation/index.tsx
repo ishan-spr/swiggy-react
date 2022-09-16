@@ -5,6 +5,7 @@ import {
   ActiveState,
   ActiveAction,
   ActiveActionKind,
+  DropDownProp,
 } from "./navigation";
 
 const initialState: ActiveState = { active: -1 };
@@ -95,7 +96,7 @@ function NavLink({ icon, text, mobileOnly, style, tab }: NavLinkProp) {
   );
 }
 
-function DropDown({ icon, text, style, mobileOnly, children }) {
+function DropDown({ icon, text, style, mobileOnly, children }: DropDownProp) {
   return (
     <>
       <div
