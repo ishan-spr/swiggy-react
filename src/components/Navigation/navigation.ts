@@ -3,8 +3,8 @@ import { ReactNode } from "react";
 type CSSType = { [key: string]: any };
 
 interface NavComponents {
-  icon?: String;
-  text?: String;
+  icon?: string;
+  text?: string;
   mobileOnly?: Boolean;
   style?: CSSType;
 }
@@ -22,7 +22,7 @@ export enum ActiveActionKind {
 }
 
 export interface ActiveAction {
-  type: CountActionKind;
+  type: ActiveActionKind;
   payload: number;
 }
 
