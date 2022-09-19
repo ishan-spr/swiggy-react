@@ -1,53 +1,9 @@
-import React from "react";
 import styles from "./styles.module.css";
-import {
-  NavLinkProp,
-  ActiveState,
-  ActiveAction,
-  ActiveActionKind,
-  DropDownProp,
-} from "./navigation";
+import { NavLinkProp, ActiveActionKind, CSSType } from "./types";
+import { NavContextProvider, useNavContext } from "./navContext";
+import { ReactNode } from "react";
 
-const initialState: ActiveState = { active: -1 };
-
-function navReducer(state: ActiveState, { type, payload }: ActiveAction) {
-  switch (type) {
-    case ActiveActionKind.CHANGE:
-      return { ...state, active: payload };
-    default:
-      return { ...state };
-  }
-}
-
-const NavContext = React.createContext<{
-  state: ActiveState;
-  dispatch: React.Dispatch<any>;
-}>({
-  state: initialState,
-  dispatch: () => null,
-});
-
-function NavContextProvider({ children }) {
-  const [state, dispatch] = React.useReducer(navReducer, initialState);
-  return (
-    <NavContext.Provider value={{ state, dispatch }}>
-      {children}
-    </NavContext.Provider>
-  );
-}
-
-function useNavContext(): {
-  state: ActiveState;
-  dispatch: React.Dispatch<any>;
-} {
-  const context = React.useContext(NavContext);
-  if (!context) {
-    throw new Error("Wrap element inside context provider");
-  }
-  return context;
-}
-
-function Navbar({ children, style }) {
+function Navbar({ children, style }: { children: ReactNode; style: CSSType }) {
   return (
     <NavContextProvider>
       <div className={styles.Navbar} style={style}>
@@ -57,7 +13,13 @@ function Navbar({ children, style }) {
   );
 }
 
-function NavGroup({ children, style }) {
+function NavGroup({
+  children,
+  style,
+}: {
+  children: ReactNode;
+  style: CSSType;
+}) {
   return (
     <>
       <div className={styles.NavGroup} style={style}>
@@ -96,31 +58,4 @@ function NavLink({ icon, text, mobileOnly, style, tab }: NavLinkProp) {
   );
 }
 
-function DropDown({ icon, text, style, mobileOnly, children }: DropDownProp) {
-  return (
-    <>
-      <div
-        className={styles.NavLink + " " + styles.Dropdown}
-        style={mobileOnly ? { ...style, display: "none" } : style}
-      >
-        {icon ? (
-          <span className="material-symbols-outlined">{icon}</span>
-        ) : null}
-        {text ? <span className={styles.Text}>{text}</span> : null}
-        <div className={styles.DropdownContent}>
-          <ul>{children}</ul>
-        </div>
-      </div>
-    </>
-  );
-}
-
-function Option({ children }) {
-  return (
-    <>
-      <li>{children}</li>
-    </>
-  );
-}
-
-export { Navbar, NavGroup, NavLink, DropDown, Option };
+export { Navbar, NavGroup, NavLink };

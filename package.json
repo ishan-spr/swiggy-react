@@ -46,6 +46,7 @@
   "devDependencies": {
     "@faker-js/faker": "^7.4.0",
     "@tsconfig/node14": "^1.0.3",
-    "gh-pages": "^4.0.0"
+    "gh-pages": "^4.0.0",
+    "typescript-plugin-css-modules": "^3.4.0"
   }
 }

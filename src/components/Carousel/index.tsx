@@ -17,103 +17,107 @@ const CarouselCard = React.forwardRef<RefType, { src: string }>(function (
   );
 });
 
-function getOffSets(el) {
+function getOffSets(el: HTMLDivElement) {
   let coordinates = el.getBoundingClientRect();
   return { left: coordinates.left, right: coordinates.right };
 }
 
-const CarouselWrapper = React.forwardRef<ScrollRefType, any>(
-  function CarouselWrapper(
-    { slides, setIsleftVisible, setIsRightVisible },
-    ref
-  ) {
-    const containerRef = React.useRef<HTMLDivElement>(null);
-    const firstCardRef = React.useRef<RefType>(null);
-    const lastCardRef = React.useRef<RefType>(null);
-
-    function scollLeft() {
-      if (
-        firstCardRef &&
-        firstCardRef.current &&
-        firstCardRef.current.div &&
-        containerRef &&
-        containerRef.current
-      ) {
-        let width = firstCardRef.current.div.offsetWidth + 23;
-        let carouselOffsets = getOffSets(containerRef.current);
-        if (
-          Math.ceil(carouselOffsets.left) + 10 <=
-          Math.ceil(getOffSets(firstCardRef.current.div).left)
-        ) {
-          setIsleftVisible(false);
-        } else {
-          setIsRightVisible(true);
-        }
-        containerRef.current.scrollBy(-width, 0);
-      }
-    }
-
-    function scrollRight() {
-      if (
-        lastCardRef &&
-        lastCardRef.current &&
-        lastCardRef.current.div &&
-        containerRef &&
-        containerRef.current
-      ) {
-        let width = lastCardRef.current.div.offsetWidth + 23;
-        let carouselOffsets = getOffSets(containerRef.current);
-        if (
-          Math.ceil(carouselOffsets.right) - 10 >=
-          Math.ceil(getOffSets(lastCardRef.current.div).left)
-        ) {
-          setIsRightVisible(false);
-        } else {
-          setIsleftVisible(true);
-        }
-        containerRef.current.scrollBy(width, 0);
-      }
-    }
-
-    React.useImperativeHandle(ref, () => ({ scrollRight, scollLeft }));
-
-    return (
-      <div className={styles.CarouselWrapper} ref={containerRef}>
-        {slides.map((slide, index) => {
-          return index === 0 ? (
-            <CarouselCard src={slide} ref={firstCardRef} key={index} />
-          ) : index === slides.length - 1 ? (
-            <CarouselCard src={slide} ref={lastCardRef} key={index} />
-          ) : (
-            <CarouselCard src={slide} key={index} />
-          );
-        })}
-      </div>
-    );
+const CarouselWrapper = React.forwardRef<
+  ScrollRefType,
+  {
+    slides: Array<string>;
+    setIsleftVisible: (val: boolean) => void;
+    setIsRightVisible: (val: boolean) => void;
   }
-);
+>(function CarouselWrapper(
+  { slides, setIsleftVisible, setIsRightVisible },
+  ref
+) {
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const firstCardRef = React.useRef<RefType>(null);
+  const lastCardRef = React.useRef<RefType>(null);
 
-export default function Carousel({ slides }) {
-  const CarouselWarrpperRef = React.useRef<ScrollRefType>(null);
+  function scollLeft() {
+    if (
+      firstCardRef &&
+      firstCardRef.current &&
+      firstCardRef.current.div &&
+      containerRef &&
+      containerRef.current
+    ) {
+      let width = firstCardRef.current.div.offsetWidth + 23;
+      let carouselOffsets = getOffSets(containerRef.current);
+      if (
+        Math.ceil(carouselOffsets.left) + 10 <=
+        Math.ceil(getOffSets(firstCardRef.current.div).left)
+      ) {
+        setIsleftVisible(false);
+      } else {
+        setIsRightVisible(true);
+      }
+      containerRef.current.scrollBy(-width, 0);
+    }
+  }
+
+  function scrollRight() {
+    if (
+      lastCardRef &&
+      lastCardRef.current &&
+      lastCardRef.current.div &&
+      containerRef &&
+      containerRef.current
+    ) {
+      let width = lastCardRef.current.div.offsetWidth + 23;
+      let carouselOffsets = getOffSets(containerRef.current);
+      if (
+        Math.ceil(carouselOffsets.right) - 10 >=
+        Math.ceil(getOffSets(lastCardRef.current.div).left)
+      ) {
+        setIsRightVisible(false);
+      } else {
+        setIsleftVisible(true);
+      }
+      containerRef.current.scrollBy(width, 0);
+    }
+  }
+
+  React.useImperativeHandle(ref, () => ({ scrollRight, scollLeft }));
+
+  return (
+    <div className={styles.CarouselWrapper} ref={containerRef}>
+      {slides.map((slide: string, index: number) => {
+        return index === 0 ? (
+          <CarouselCard src={slide} ref={firstCardRef} key={index} />
+        ) : index === slides.length - 1 ? (
+          <CarouselCard src={slide} ref={lastCardRef} key={index} />
+        ) : (
+          <CarouselCard src={slide} key={index} />
+        );
+      })}
+    </div>
+  );
+});
+
+export default function Carousel({ slides }: { slides: Array<string> }) {
+  const carouselWarrpperRef = React.useRef<ScrollRefType>(null);
   const [leftVisible, setIsleftVisible] = React.useState(true);
   const [rightVisible, setIsRightVisible] = React.useState(true);
 
   const handleLeftScroll = () => {
-    CarouselWarrpperRef &&
-      CarouselWarrpperRef.current &&
-      CarouselWarrpperRef.current.scollLeft();
+    carouselWarrpperRef &&
+      carouselWarrpperRef.current &&
+      carouselWarrpperRef.current.scollLeft();
   };
 
   const handleRightScroll = () => {
-    CarouselWarrpperRef &&
-      CarouselWarrpperRef.current &&
-      CarouselWarrpperRef.current.scrollRight();
+    carouselWarrpperRef &&
+      carouselWarrpperRef.current &&
+      carouselWarrpperRef.current.scrollRight();
   };
 
   return (
     <>
       <div className={styles.CarouselBtn} data-direction="left">
-        {" "}
         {leftVisible ? (
           <button onClick={handleLeftScroll}>
             <span className="material-symbols-outlined" data-testid="left-btn">
@@ -125,9 +129,9 @@ export default function Carousel({ slides }) {
       <div className={styles.CarouselContainer}>
         <CarouselWrapper
           slides={slides}
-          ref={CarouselWarrpperRef}
-          setIsRightVisible={(val) => setIsRightVisible(val)}
-          setIsleftVisible={(val) => {
+          ref={carouselWarrpperRef}
+          setIsRightVisible={(val: boolean) => setIsRightVisible(val)}
+          setIsleftVisible={(val: boolean) => {
             setIsleftVisible(val);
           }}
         />

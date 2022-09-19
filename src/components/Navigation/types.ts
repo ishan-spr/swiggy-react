@@ -1,6 +1,4 @@
-import { ReactNode } from "react";
-
-type CSSType = { [key: string]: any };
+export type CSSType = { [key: string]: any };
 
 interface NavComponents {
   icon?: string;
@@ -11,10 +9,6 @@ interface NavComponents {
 
 export interface NavLinkProp extends NavComponents {
   tab: number;
-}
-
-export interface DropDownProp extends NavComponents {
-  children?: ReactNode;
 }
 
 export enum ActiveActionKind {
